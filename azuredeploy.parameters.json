@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
-            "value": "coreyarmstore04"
+            "value": "coreyarmstore59"
         },
         "adminUsername": {
             "value": "corey"
@@ -12,13 +12,13 @@
             "value": "coreyPass007!"
         },
         "dnsName": {
-            "value": "coreyarmvm04"
+            "value": "coreyarmvm59"
         },
         "subscriptionId": {
             "value": "79d35904-6ebb-471a-93c0-4e81261b8077"
         },
         "dockerHubImage": {
-            "value": "nginx"
+            "value": "redis"
         }
    }
 }
