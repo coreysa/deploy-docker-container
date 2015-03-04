@@ -3,7 +3,8 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "West US"
         },
         "newStorageAccountName": {
             "type": "string"
@@ -83,10 +84,16 @@
             "type": "string"
         },
         "nicName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "myVMNic"                  
         },
         "dockerHubImage": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "redis"
+        },
+        "extensionName": {
+            "type": "string",
+            "defaultValue": "DockerExtension"
         }
     },
     "variables": {
@@ -204,7 +211,7 @@
         },
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('vmName'),'/', parameters('vmExtensionName'))]",
+            "name": "[concat(parameters('vmName'),'/', parameters('extensionName'))]",
             "apiVersion": "2014-12-01-preview",
             "location": "[parameters('location')]",
             "dependsOn": [

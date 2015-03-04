@@ -3,55 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
-            "value": "cloudguystore1"
+            "value": "coreyarmstore04"
         },
-        "location" : {
-            "value" : "West US"
-        },
-        "dnsName": {
-            "value": "cloudguydns1"
-        },
-        "publicIPAddressName": {
-            "value": "cloudguyIP"
-        },
-        "publicIPAddressType": {
-            "value": "Dynamic"
-        },
-        "vmName": {
-            "value": "cloudguyvm"
-        },
-        "vmSize": {
-            "value": "Standard_A2"
-        },
-        "adminUserName": {
-            "value": "cloudguy"
+        "adminUsername": {
+            "value": "corey"
         },
         "adminPassword": {
-            "value": "abc_123!"
+            "value": "coreyPass007!"
         },
-        "virtualNetworkName": {
-            "value": "cloudguyvnet"
+        "dnsName": {
+            "value": "coreyarmvm04"
         },
         "subscriptionId": {
-            "value": ""
+            "value": "79d35904-6ebb-471a-93c0-4e81261b8077"
         },
-        "nicName": {
-            "value": "cloudguyNic"
-        },
-        "vmExtensionName": {
-            "value": "dscExtension"
-        },
-        "modulesUrl": {
-            "value": "https://cloudguy.blob.core.windows.net/scripts/MySample.ps1.zip"
-        },
-        "sasToken": {
-            "value": ""
-        },
-        "configurationFunction": {
-            "value": "MySample.ps1\\Main"
-        },
-        "destinationPath": {
-            "value": "c:\foo\\MySample.ps1.zip"
+        "dockerHubImage": {
+            "value": "nginx"
         }
-    }
+   }
 }
