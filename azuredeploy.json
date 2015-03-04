@@ -53,7 +53,7 @@
             "type": "securestring"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "string",
             "defaultValue": "MyVNET"
         },
         "addressPrefix": {
