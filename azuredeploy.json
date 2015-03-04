@@ -17,7 +17,8 @@
             ]
         },
         "publicIPAddressName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "myPublicIP"
         },
         "publicIPAddressType": {
             "type": "string",
@@ -31,7 +32,8 @@
             "defaultValue": "vhds"
         },
         "vmName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "MyDockerVM"
         },
         "vmSize": {
             "type": "string",
@@ -44,10 +46,6 @@
                 "Standard_A4"
             ]
         },
-        "vmSourceImageName": {
-            "type": "string",
-            "defaultValue": "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201412.01-en.us-127GB.vhd"
-        },
         "adminUsername": {
             "type": "string"
         },
@@ -56,6 +54,7 @@
         },
         "virtualNetworkName": {
             "type": "string"
+            "defaultValue": "MyVNET"
         },
         "addressPrefix": {
             "type": "string",
@@ -86,21 +85,15 @@
         "nicName": {
             "type": "string"
         },
-        "vmExtensionName": {
-            "type": "string"
-        },
-        "modulesUrl": {
-            "type": "string"
-        },
-        "configurationFunction": {
+        "dockerHubImage": {
             "type": "string"
         }
     },
     "variables": {
-        "sourceImageName": "[concat('/',parameters('subscriptionId'),'/services/images/',parameters('vmSourceImageName'))]",
+        "sourceImageName": "[concat('/',parameters('subscriptionId'),'/services/images/',parameters('vmSourceImageName'))]","sourceImageName" : "[concat('/',parameters('subscriptionId'),'/services/images/b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-15_04-amd64-server-20150120.1-alpha2-en-us-30GB')]"
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]"
-    },
+    },    
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
@@ -218,18 +211,17 @@
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
             ],
             "properties": {
-                "publisher": "Microsoft.Powershell",
-                "type": "DSC",
-                "typeHandlerVersion": "1.5",
+                "publisher": "MSOpenTech.Extensions",
+                "type": "DockerExtension",
+                "typeHandlerVersion": "0.6",
                 "settings": {
-                    "ModulesUrl": "[parameters('modulesUrl')]",
-                    "SasToken": "[parameters('sasToken')]",
-                    "ConfigurationFunction": "[parameters('configurationFunction')]",
-                    "Properties": {
-                        "MachineName": "[parameters('vmName')]"
+                    "composeup": {
+                         "db": {
+                             "image": "[parameters('dockerHubImage')]"
+                          }
                     }
                 },
-                "protectedSettings": null
+                "installonly": "true"
             }
         }
     ]
