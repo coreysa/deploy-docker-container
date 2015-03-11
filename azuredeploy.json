@@ -227,9 +227,9 @@
                          "service": {
                              "image": "[parameters('dockerHubImage')]"
                           }
-                    }
-                },
-                "installonly": "true"
+                    },
+                    "installonly": "true"
+                }
             }
         }
     ]
